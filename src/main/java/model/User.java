@@ -18,6 +18,38 @@ public class User {
     public static final String GET_ALL = "User.getAll";
     public static final String DELETE = "User.delete";
 
+    public User()
+    {
+
+    }
+
+    public User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public User(String lastName, String firstName, String middleName, String position) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.position = position;
+    }
+
+    public User(String lastName, String firstName, String middleName, LocalDate birthDay) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.birthDay = birthDay;
+    }
+
+    public User(String lastName, String firstName, String middleName, String position, LocalDate birthDay) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.position = position;
+        this.birthDay = birthDay;
+    }
+
     @Id
     @SequenceGenerator(name = "seq", sequenceName = "seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")

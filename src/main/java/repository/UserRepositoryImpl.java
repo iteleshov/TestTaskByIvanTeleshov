@@ -2,6 +2,7 @@ package repository;
 
 import model.User;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,6 +12,7 @@ import java.util.List;
  * Created by Jager on 25.08.2016.
  */
 @Repository
+@Transactional(readOnly = true)
 public class UserRepositoryImpl implements UserRepository{
 
     @PersistenceContext
@@ -24,6 +26,7 @@ public class UserRepositoryImpl implements UserRepository{
 
     @Override
     public User get(int id) {
+        System.out.println(entityManager);
         return entityManager.find(User.class, id);
     }
 
