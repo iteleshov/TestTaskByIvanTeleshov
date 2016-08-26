@@ -1,7 +1,10 @@
 package com.teleshovivan;
 
 import java.util.Arrays;
+import java.util.List;
 
+import com.teleshovivan.model.User;
+import com.teleshovivan.service.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ApplicationContext;
@@ -22,6 +25,12 @@ public class Application {
         Arrays.sort(beanNames);
         for (String beanName : beanNames) {
             System.out.println(beanName);
+        }
+
+        UserService service = ctx.getBean(UserService.class);
+        List<User> users = service.getAll();
+        for (User user : users) {
+            System.out.println(user);
         }
     }
 

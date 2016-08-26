@@ -11,7 +11,6 @@ import java.util.List;
 /**
  * Created by nz on 26.08.16.
  */
-@ComponentScan
 @Service
 public class UserServiceImpl implements UserService {
 

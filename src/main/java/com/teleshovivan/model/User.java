@@ -9,10 +9,11 @@ import java.time.LocalDate;
  * Created by Jager on 25.08.2016.
  */
 @NamedQueries({
-@NamedQuery(name = User.GET_ALL, query = "SELECT u FROM User u"),
-@NamedQuery(name = User.DELETE, query = "DELETE FROM User u WHERE u.id=:id")
+        @NamedQuery(name = User.GET_ALL, query = "SELECT u FROM User u"),
+        @NamedQuery(name = User.DELETE, query = "DELETE FROM User u WHERE u.id=:id")
 })
 @Entity
+@Table(name = "users")
 public class User {
 
     public static final String GET_ALL = "User.getAll";
@@ -28,26 +29,26 @@ public class User {
         this.lastName = lastName;
     }
 
-    public User(String lastName, String firstName, String middleName, String position) {
+    public User(String lastName, String firstName, String middleName, String appointment) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.middleName = middleName;
-        this.position = position;
+        this.appointment = appointment;
     }
 
     public User(String lastName, String firstName, String middleName, LocalDate birthDay) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.middleName = middleName;
-        this.birthDay = birthDay;
+        this.birthday = birthDay;
     }
 
-    public User(String lastName, String firstName, String middleName, String position, LocalDate birthDay) {
+    public User(String lastName, String firstName, String middleName, String appointment, LocalDate birthDay) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.middleName = middleName;
-        this.position = position;
-        this.birthDay = birthDay;
+        this.appointment = appointment;
+        this.birthday = birthDay;
     }
 
     @Id
@@ -66,11 +67,11 @@ public class User {
     @Column(name = "middle_name")
     private String middleName;
 
-    @Column(name = "position")
-    private String position;
+    @Column(name = "appointment")
+    private String appointment;
 
-    @Column
-    private LocalDate birthDay;
+    @Column(name = "birthday")
+    private LocalDate birthday;
 
     public Integer getId() {
         return id;
@@ -104,19 +105,31 @@ public class User {
         this.middleName = middleName;
     }
 
-    public String getPosition() {
-        return position;
+    public String getAppointment() {
+        return appointment;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setAppointment(String appointment) {
+        this.appointment = appointment;
     }
 
     public LocalDate getBirthDay() {
-        return birthDay;
+        return birthday;
     }
 
     public void setBirthDay(LocalDate birthDay) {
-        this.birthDay = birthDay;
+        this.birthday = birthday;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", appointment='" + appointment + '\'' +
+                ", birthday=" + birthday +
+                '}';
     }
 }
