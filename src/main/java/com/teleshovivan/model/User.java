@@ -148,19 +148,29 @@ public class User {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) return false;
-        if (obj == this) return true;
-        if (!(obj instanceof User))return false;
-        User user = (User) obj;
-        if(!user.getId().equals(this.getId())) return false;
-        if(!user.getAppointment().equals(this.getAppointment())) return false;
-        if(!user.getLastName().equals(this.getLastName())) return false;
-        if(!user.getFirstName().equals(this.getFirstName())) return false;
-        if(!user.getMiddleName().equals(this.getMiddleName())) return false;
-        if(!user.getBirthDay().equals(this.getBirthDay())) return false;
-        return true;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        User user = (User) o;
 
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        if (middleName != null ? !middleName.equals(user.middleName) : user.middleName != null) return false;
+        if (appointment != null ? !appointment.equals(user.appointment) : user.appointment != null) return false;
+        return birthday != null ? birthday.equals(user.birthday) : user.birthday == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (middleName != null ? middleName.hashCode() : 0);
+        result = 31 * result + (appointment != null ? appointment.hashCode() : 0);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+        return result;
     }
 }
