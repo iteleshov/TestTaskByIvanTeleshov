@@ -24,6 +24,11 @@ public class User {
 
     }
 
+    public User(User user)
+    {
+        this(user.id, user.getLastName(), user.getFirstName(), user.getMiddleName(), user.getAppointment(), user.getBirthDay());
+    }
+
     public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -44,6 +49,15 @@ public class User {
     }
 
     public User(String lastName, String firstName, String middleName, String appointment, LocalDate birthDay) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.appointment = appointment;
+        this.birthday = birthDay;
+    }
+
+    public User(Integer id, String lastName, String firstName, String middleName, String appointment, LocalDate birthDay) {
+        this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -131,5 +145,22 @@ public class User {
                 ", appointment='" + appointment + '\'' +
                 ", birthday=" + birthday +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (!(obj instanceof User))return false;
+        User user = (User) obj;
+        if(!user.getId().equals(this.getId())) return false;
+        if(!user.getAppointment().equals(this.getAppointment())) return false;
+        if(!user.getLastName().equals(this.getLastName())) return false;
+        if(!user.getFirstName().equals(this.getFirstName())) return false;
+        if(!user.getMiddleName().equals(this.getMiddleName())) return false;
+        if(!user.getBirthDay().equals(this.getBirthDay())) return false;
+        return true;
+
+
     }
 }
