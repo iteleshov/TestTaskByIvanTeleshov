@@ -29,8 +29,8 @@ public class Application {
 
         UserService service = ctx.getBean(UserService.class);
         service.getAll().forEach(System.out::println);
-        service.delete(1);
-        service.getAll().forEach(System.out::println);
+    //    service.delete(1);
+    //    service.getAll().forEach(System.out::println);
 
     }
 }

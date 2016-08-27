@@ -2,7 +2,7 @@ DELETE FROM users;
 ALTER SEQUENCE seq RESTART WITH 1;
 
 INSERT INTO users (last_name, first_name, middle_name, appointment, birthday) VALUES
-    ('Teleshov', 'Ivan', 'Aleksandrovich', 'Java Developer', '1991-08-09'),
-    ('Osnitskaya', 'Natalia', 'asdfasdf', 'HR manager', '2015-08-25'),
-    ('Kurashov', 'Alexey', 'Fedorovich', 'Java Developer', '2015-08-25'),
-    ('Simachev', 'Denis', 'Aleksandrovich', 'Java Developer', '2015-08-25');
+    ('Razin', 'Stepan', 'Timofeevich', 'Back-end developer', '1674-06-05'),
+    ('Pugachev', 'Emelyan', 'Ivanovich' , 'Front-end developer', '1775-01-10'),
+    ('Romanov', 'Peter', 'Alekseevich', 'Team lead', '1672-05-30'),
+    ('Romanova', 'Ekaterina', 'Alekseevna', 'QA engineer', '1762-06-28');

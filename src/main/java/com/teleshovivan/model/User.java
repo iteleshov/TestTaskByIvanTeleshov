@@ -8,44 +8,17 @@ import java.time.LocalDate;
 /**
  * Created by Jager on 25.08.2016.
  */
-@NamedQueries({
-        @NamedQuery(name = User.GET_ALL, query = "SELECT u FROM User u"),
-        @NamedQuery(name = User.DELETE, query = "DELETE FROM User u WHERE u.id=:id")
-})
+
 @Entity
 @Table(name = "users")
 public class User {
 
-    public static final String GET_ALL = "User.getAll";
-    public static final String DELETE = "User.delete";
-
-    public User()
-    {
-
+    public User() {
     }
 
     public User(User user)
     {
         this(user.id, user.getLastName(), user.getFirstName(), user.getMiddleName(), user.getAppointment(), user.getBirthDay());
-    }
-
-    public User(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public User(String lastName, String firstName, String middleName, String appointment) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.appointment = appointment;
-    }
-
-    public User(String lastName, String firstName, String middleName, LocalDate birthDay) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.birthday = birthDay;
     }
 
     public User(String lastName, String firstName, String middleName, String appointment, LocalDate birthDay) {

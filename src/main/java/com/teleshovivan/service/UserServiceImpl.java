@@ -1,6 +1,7 @@
 package com.teleshovivan.service;
 
 import com.teleshovivan.model.User;
+import com.teleshovivan.util.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
@@ -14,12 +15,8 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
     private UserRepository repository;
-
-    public UserServiceImpl(UserRepository repository)
-    {
-        this.repository = repository;
-    }
 
     @Override
     public User save(User user) {
@@ -33,7 +30,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User get(int id) {
-        return repository.findOne(id);
+        User user = repository.findOne(id);
+        if(user == null){
+            throw new NotFoundException("Not found user with id=" + id);
+        }
+        return user;
     }
 
     @Override
