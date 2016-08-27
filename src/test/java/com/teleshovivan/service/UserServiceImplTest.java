@@ -43,7 +43,7 @@ public class UserServiceImplTest {
 
     @Test
     public void testDelete() throws Exception {
-        service.delete(USER1.getId());
+        service.delete(USER1_ID);
         User [] expected = {USER2, USER3, USER4};
         Assert.assertArrayEquals(expected, service.getAll().toArray());
     }
@@ -73,7 +73,7 @@ public class UserServiceImplTest {
         updatedUser.setMiddleName("new middle name");
         updatedUser.setBirthDay(LocalDate.parse("2012-12-12"));
         service.update(updatedUser);
-        Assert.assertEquals(updatedUser, service.get(USER1.getId()));
+        Assert.assertEquals(updatedUser, service.get(USER1_ID));
     }
 
     @Test

@@ -12,6 +12,4 @@ import java.util.List;
  * Created by Jager on 25.08.2016.
  */
 public interface UserRepository extends JpaRepository<User, Integer> {
-    @Override
-    List<User> findAll();
 }
