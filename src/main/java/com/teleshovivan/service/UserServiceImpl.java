@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User get(int id) {
+    public User get(int id) throws NotFoundException{
         User user = repository.findOne(id);
         if(user == null){
             throw new NotFoundException("Not found user with id=" + id);
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(User user) {
+    public void update(User user) throws NotFoundException{
         User updatedUser = repository.save(user);
         if(updatedUser == null) {
             throw new NotFoundException("Not found user with id=" + user.getId());

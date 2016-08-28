@@ -7,15 +7,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
+
+import static com.teleshovivan.controller.UserRestController.REST_URL;
 
 /**
  * Created by Jager on 28.08.2016.
  */
-@RestController(value = "/")
+@RestController(value = REST_URL)
 public class UserRestController {
 
+    public static final String REST_URL = "/";
     @Autowired
     private UserService service;
 
@@ -32,21 +37,23 @@ public class UserRestController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> create(@RequestBody User user) {
-        service.save(user);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<User> create(@RequestBody User user) {
+        User savedUser = service.save(user);
+        URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path(REST_URL + "/{id}")
+                .buildAndExpand(savedUser.getId()).toUri();
+        return ResponseEntity.created(uriOfNewResource).body(savedUser);
     }
 
 
-    @RequestMapping(value = "/", method = RequestMethod.PUT)
-    public ResponseEntity<String> update(@RequestBody User user) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void update(@PathVariable int id, @RequestBody User user) {
+        user.setId(id);
         service.update(user);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> delete(@PathVariable int id) {
+    public void delete(@PathVariable int id) {
         service.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
