@@ -23,16 +23,18 @@ public class RestExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
     @Order(Ordered.HIGHEST_PRECEDENCE + 1)
-    public void handleNotFoundException(NotFoundException ex) {
+    public String handleNotFoundException(NotFoundException ex) {
         LOGGER.debug(ex.getMessage());
+        return ex.getMessage();
     }
 
     @ExceptionHandler(EmptyResultDataAccessException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
     @Order(Ordered.HIGHEST_PRECEDENCE + 2)
-    public void handleEmptyResultDataAccessException(EmptyResultDataAccessException ex) {
+    public String handleEmptyResultDataAccessException(EmptyResultDataAccessException ex) {
         LOGGER.debug(ex.getMessage());
+        return ex.getMessage();
     }
 }
 

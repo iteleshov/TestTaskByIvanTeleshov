@@ -17,14 +17,15 @@ import static com.teleshovivan.controller.UserRestController.REST_URL;
 /**
  * Created by Jager on 28.08.2016.
  */
-@RestController(value = REST_URL)
+@RestController
+@RequestMapping(REST_URL)
 public class UserRestController {
 
-    public static final String REST_URL = "/";
+    public static final String REST_URL = "/rest";
     @Autowired
     private UserService service;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<User>> getAll() {
         List<User> users = service.getAll();
         return new ResponseEntity<>(users, HttpStatus.OK);
@@ -36,12 +37,14 @@ public class UserRestController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> create(@RequestBody User user) {
         User savedUser = service.save(user);
+
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
                 .buildAndExpand(savedUser.getId()).toUri();
+
         return ResponseEntity.created(uriOfNewResource).body(savedUser);
     }
 

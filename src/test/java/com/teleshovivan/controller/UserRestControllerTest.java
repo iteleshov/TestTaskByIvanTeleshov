@@ -48,6 +48,8 @@ import static org.junit.Assert.*;
 @Sql(scripts = {"classpath:schema.sql", "classpath:data.sql"}, config = @SqlConfig(encoding = "UTF-8"), executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class UserRestControllerTest {
 
+    public static final String REST_URL = UserRestController.REST_URL;
+
     @Autowired
     private UserService service;
 
@@ -111,7 +113,7 @@ public class UserRestControllerTest {
 
         String jsonUpdatedUser = objectWriter.writeValueAsString(updaedUser);
 
-        mockMvc.perform(put("/" +updaedUser.getId())
+        mockMvc.perform(put(REST_URL + updaedUser.getId())
                 .contentType(APPLICATION_JSON_UTF8)
                 .content(jsonUpdatedUser))
                 .andExpect(status().isOk());
