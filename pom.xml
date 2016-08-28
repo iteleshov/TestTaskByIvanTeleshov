@@ -37,7 +37,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <version>1.4.0.RELEASE</version>
         </dependency>
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>

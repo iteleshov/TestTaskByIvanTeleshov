@@ -18,7 +18,7 @@ public class User {
 
     public User(User user)
     {
-        this(user.id, user.getLastName(), user.getFirstName(), user.getMiddleName(), user.getAppointment(), user.getBirthDay());
+        this(user.getId(), user.getLastName(), user.getFirstName(), user.getMiddleName(), user.getAppointment(), user.getBirthday());
     }
 
     public User(String lastName, String firstName, String middleName, String appointment, LocalDate birthDay) {
@@ -100,11 +100,11 @@ public class User {
         this.appointment = appointment;
     }
 
-    public LocalDate getBirthDay() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthDay(LocalDate birthDay) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
