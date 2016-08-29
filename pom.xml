@@ -25,6 +25,7 @@
         <angularjs.version>1.5.7</angularjs.version>
         <datetimepicker.version>2.4.7</datetimepicker.version>
         <jquery.version>2.2.4</jquery.version>
+        <momentjs.version>2.14.1</momentjs.version>
     </properties>
 
     <dependencies>
@@ -87,6 +88,12 @@
             <artifactId>jquery</artifactId>
             <version>${jquery.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>momentjs</artifactId>
+            <version>${momentjs.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

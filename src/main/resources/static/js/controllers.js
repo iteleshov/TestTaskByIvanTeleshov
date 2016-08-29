@@ -23,6 +23,32 @@
                 $scope.users.splice($scope.users.indexOf(user), 1);
             });
         };
+
+        $scope.dateRangeFilter = function (property, startDate, endDate) {
+            return function (item) {
+                if (item[property] === null) return false;
+                if (startDate === undefined && endDate === undefined) return true;
+
+                var itemDate = moment(item[property]);
+                var start;
+                var end;
+
+                if (endDate === undefined) {
+                    start = moment(startDate, "YYYY-MM-DD");
+                    return itemDate >= start;
+                }
+                else if (startDate === undefined) {
+                    end = moment(endDate, "YYYY-MM-DD");
+                    return itemDate <= end;
+                }
+                else {
+                    start = moment(startDate, "YYYY-MM-DD");
+                    end = moment(endDate, "YYYY-MM-DD");
+                    if (itemDate >= start && itemDate <= end) return true;
+                    return false;
+                }
+            }
+        }
     };
 
     AppController.$inject = ['$scope', 'User'];
