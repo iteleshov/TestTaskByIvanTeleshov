@@ -27,17 +27,17 @@
         $scope.dateRangeFilter = function (property, startDate, endDate) {
             return function (item) {
                 if (item[property] === null) return false;
-                if (startDate === undefined && endDate === undefined) return true;
+                if (startDate === undefined && endDate === undefined || startDate === '' && endDate === '') return true;
 
                 var itemDate = moment(item[property]);
                 var start;
                 var end;
 
-                if (endDate === undefined) {
+                if (endDate === undefined || endDate === '') {
                     start = moment(startDate, "YYYY-MM-DD");
                     return itemDate >= start;
                 }
-                else if (startDate === undefined) {
+                else if (startDate === undefined || startDate === '') {
                     end = moment(endDate, "YYYY-MM-DD");
                     return itemDate <= end;
                 }
