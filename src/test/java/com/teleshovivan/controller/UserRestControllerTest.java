@@ -6,7 +6,7 @@ import com.teleshovivan.Application;
 import com.teleshovivan.model.User;
 import com.teleshovivan.service.UserService;
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +17,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
+import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -53,8 +55,8 @@ public class UserRestControllerTest {
 
     private ObjectWriter objectWriter;
 
-    @BeforeClass
-    public void setup() {
+    @PostConstruct
+    public void postConstruct() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
         this.objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
     }
