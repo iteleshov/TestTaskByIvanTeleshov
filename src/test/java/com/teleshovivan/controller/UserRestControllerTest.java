@@ -126,4 +126,77 @@ public class UserRestControllerTest {
                 .andExpect(status().isNotFound());
     }
 
+    @Test
+    public void testGetAllByLastName() throws Exception {
+        mockMvc.perform(get(REST_URL + "filterByLastName?lastName=" + USER3.getLastName()))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$.[0].lastName", is(USER3.getLastName())))
+                .andExpect(jsonPath("$.[0].firstName", is(USER3.getFirstName())))
+                .andExpect(jsonPath("$.[0].middleName", is(USER3.getMiddleName())))
+                .andExpect(jsonPath("$.[0].appointment", is(USER3.getAppointment())))
+                .andExpect(jsonPath("$.[0].birthday", is(USER3.getBirthday().toString())));
+    }
+
+    @Test
+    public void testGetAllByFirstName() throws Exception {
+        mockMvc.perform(get(REST_URL + "filterByFirstName")
+                .param("firstName", USER2.getFirstName()))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$.[0].lastName", is(USER2.getLastName())))
+                .andExpect(jsonPath("$.[0].firstName", is(USER2.getFirstName())))
+                .andExpect(jsonPath("$.[0].middleName", is(USER2.getMiddleName())))
+                .andExpect(jsonPath("$.[0].appointment", is(USER2.getAppointment())))
+                .andExpect(jsonPath("$.[0].birthday", is(USER2.getBirthday().toString())));
+    }
+
+    @Test
+    public void testGetAllByMiddleName() throws Exception {
+        mockMvc.perform(get(REST_URL + "filterByMiddleName")
+                .param("middleName", USER1.getMiddleName()))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$.[0].lastName", is(USER1.getLastName())))
+                .andExpect(jsonPath("$.[0].firstName", is(USER1.getFirstName())))
+                .andExpect(jsonPath("$.[0].middleName", is(USER1.getMiddleName())))
+                .andExpect(jsonPath("$.[0].appointment", is(USER1.getAppointment())))
+                .andExpect(jsonPath("$.[0].birthday", is(USER1.getBirthday().toString())));
+    }
+
+    @Test
+    public void testGetAllByAppointment() throws Exception {
+        mockMvc.perform(get(REST_URL + "filterByAppointment")
+                .param("appointment", USER3.getAppointment()))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$.[0].lastName", is(USER3.getLastName())))
+                .andExpect(jsonPath("$.[0].firstName", is(USER3.getFirstName())))
+                .andExpect(jsonPath("$.[0].middleName", is(USER3.getMiddleName())))
+                .andExpect(jsonPath("$.[0].appointment", is(USER3.getAppointment())))
+                .andExpect(jsonPath("$.[0].birthday", is(USER3.getBirthday().toString())));
+    }
+
+
+    @Test
+    public void testGetAllByBirthdayBetween() throws Exception {
+        User [] expected = {USER1, USER3};
+
+        mockMvc.perform(get(REST_URL + "between")
+                .param("startDate", "1600-01-01")
+                .param("endDate", "1700-01-01"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$.[0].lastName", is(expected[0].getLastName())))
+                .andExpect(jsonPath("$.[0].firstName", is(expected[0].getFirstName())))
+                .andExpect(jsonPath("$.[0].middleName", is(expected[0].getMiddleName())))
+                .andExpect(jsonPath("$.[0].appointment", is(expected[0].getAppointment())))
+                .andExpect(jsonPath("$.[0].birthday", is(expected[0].getBirthday().toString())))
+                .andExpect(jsonPath("$.[1].lastName", is(expected[1].getLastName())))
+                .andExpect(jsonPath("$.[1].firstName", is(expected[1].getFirstName())))
+                .andExpect(jsonPath("$.[1].middleName", is(expected[1].getMiddleName())))
+                .andExpect(jsonPath("$.[1].appointment", is(expected[1].getAppointment())))
+                .andExpect(jsonPath("$.[1].birthday", is(expected[1].getBirthday().toString())));
+    }
+
 }
