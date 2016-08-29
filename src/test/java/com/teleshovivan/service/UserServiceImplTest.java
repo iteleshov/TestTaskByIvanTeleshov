@@ -81,4 +81,29 @@ public class UserServiceImplTest {
         User [] expected = {USER1, USER2, USER3, USER4};
         Assert.assertArrayEquals(expected, service.getAll().toArray());
     }
+
+    @Test
+    public void testGetAllByLastName() throws Exception {
+        User [] expected = {USER3};
+        Assert.assertArrayEquals(expected, service.getAllByLastName(LAST_NAME_SEARCH).toArray());
+    }
+
+    @Test
+    public void testGetAllByFirstName() throws Exception {
+        User [] expected = {USER2};
+        Assert.assertArrayEquals(expected, service.getAllByFirstName(FIRST_NAME_SEARCH).toArray());
+    }
+
+    @Test
+    public void testGetAllByMiddleName() throws Exception {
+        User [] expected = {USER1};
+        Assert.assertArrayEquals(expected, service.getAllByMiddleName(MIDDLE_NAME_SEARCH).toArray());
+    }
+
+
+    @Test
+    public void testGetAllByBirthday() throws Exception {
+        User [] expected = {USER1, USER3};
+        Assert.assertArrayEquals(expected, service.getAllByBirthDayBetween(START_BIRTHDAY_SEARCH, END_BIRTHDAY_SEARCH).toArray());
+    }
 }

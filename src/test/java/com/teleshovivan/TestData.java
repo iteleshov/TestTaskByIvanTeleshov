@@ -21,4 +21,10 @@ public class TestData {
     public static final User USER4 = new User(USER4_ID, "Romanova", "Ekaterina", "Alekseevna", "QA engineer", LocalDate.parse("1762-06-28"));
 
     public static final User NEW_USER = new User("Romanov", "Mikhail", "Fyodorovich", "DevOps", LocalDate.parse("1596-07-22"));
+
+    public static final String LAST_NAME_SEARCH = "Romanov";
+    public static final String FIRST_NAME_SEARCH = "Emelyan";
+    public static final String MIDDLE_NAME_SEARCH = "Timofeevich";
+    public static final LocalDate START_BIRTHDAY_SEARCH = LocalDate.parse("1600-01-01");
+    public static final LocalDate END_BIRTHDAY_SEARCH = LocalDate.parse("1700-01-01");
 }
