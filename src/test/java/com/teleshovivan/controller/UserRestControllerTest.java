@@ -210,4 +210,13 @@ public class UserRestControllerTest {
                 .andExpect(jsonPath("$.[1].birthday", is(expected[1].getBirthday().toString())));
     }
 
+    @Test
+    public void testGetAllByBirthdayBetweenWithoutStartDateAndEndDate() throws Exception {
+        mockMvc.perform(get(REST_URL + "between"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$", hasSize(4)));
+    }
+
 }

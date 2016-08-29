@@ -9,6 +9,16 @@
         <h1 align="center">Users</h1>
     </div>
     <table class="table table-striped display">
+        <thread>
+            <tr>
+                <th>Last name</th>
+                <th>First name</th>
+                <th>Middle name</th>
+                <th>Appointment</th>
+                <th>Birthday</th>
+                <th>Delete</th>
+            </tr>
+        </thread>
         <tr ng-repeat="user in users">
             <td>{{ user.lastName }}</td>
             <td>{{ user.firstName }}</td>
@@ -16,15 +26,15 @@
             <td>{{ user.appointment }}</td>
             <td>{{ user.birthday }}</td>
             <td>
-                <button class="alert-danger glyphicon-trash" href=""/>
+                <button type="button" class="btn btn-danger btn-sm"  ng-click="deleteUser(user)">Delete</button>
             </td>
         </tr>
     </table>
 </div>
 <script type="text/javascript" src="webjars/angularjs/1.5.7/angular.min.js"></script>
 <script type="text/javascript" src="webjars/angularjs/1.5.7/angular-resource.min.js"></script>
-<script type="text/javascript" src="static/js/app.js"></script>
-<script type="text/javascript" src="static/js/controllers.js"></script>
-<script type="text/javascript" src="static/js/services.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controllers.js"></script>
+<script type="text/javascript" src="js/services.js"></script>
 </body>
 </html>

@@ -65,7 +65,7 @@ public class UserServiceImplTest {
         updatedUser.setLastName("new last name");
         updatedUser.setFirstName("new first name");
         updatedUser.setMiddleName("new middle name");
-        updatedUser.setBirthday(LocalDate.parse("2012-12-12"));
+        updatedUser.setBirthday(LocalDate.of(2012, 12, 12));
         service.update(updatedUser);
         Assert.assertEquals(updatedUser, service.get(USER1_ID));
     }
