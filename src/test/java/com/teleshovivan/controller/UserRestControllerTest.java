@@ -6,7 +6,6 @@ import com.teleshovivan.Application;
 import com.teleshovivan.model.User;
 import com.teleshovivan.service.UserService;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +26,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 
-import static com.teleshovivan.TestData.*;
-
-
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.is;
 
-import static org.junit.Assert.*;
+import static com.teleshovivan.TestData.*;
+
+
+
 
 /**
  * Created by Jager on 28.08.2016.
@@ -104,7 +103,7 @@ public class UserRestControllerTest {
         updaedUser.setFirstName("new name");
         updaedUser.setLastName("new last name");
         updaedUser.setMiddleName("new middle name");
-        updaedUser.setBirthday(LocalDate.parse("2012-12-12"));
+        updaedUser.setBirthday(LocalDate.of(2012, 12, 12));
 
         String jsonUpdatedUser = objectWriter.writeValueAsString(updaedUser);
 

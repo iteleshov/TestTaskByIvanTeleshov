@@ -25,7 +25,7 @@ public interface UserService {
 
     List<User> getAllByMiddleName(String middleName);
 
-    List<User> getAllByBirthDayBetween(LocalDate startDate, LocalDate endDate);
+    List<User> getAllByBirthdayBetween(LocalDate startDate, LocalDate endDate);
 
     List<User> getAllByAppointment(String appointment);
 

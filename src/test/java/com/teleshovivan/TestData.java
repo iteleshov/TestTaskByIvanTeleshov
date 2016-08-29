@@ -15,16 +15,16 @@ public class TestData {
     public static final int USER4_ID = 4;
     public static final int NOT_EXIST_USER_ID = 666;
 
-    public static final User USER1 = new User(USER1_ID, "Razin", "Stepan", "Timofeevich", "Back-end developer", LocalDate.parse("1674-06-05"));
-    public static final User USER2 = new User(USER2_ID, "Pugachev", "Emelyan", "Ivanovich", "Front-end developer", LocalDate.parse("1775-01-10"));
-    public static final User USER3 = new User(USER3_ID, "Romanov", "Peter", "Alekseevich", "Team lead", LocalDate.parse("1672-05-30"));
-    public static final User USER4 = new User(USER4_ID, "Romanova", "Ekaterina", "Alekseevna", "QA engineer", LocalDate.parse("1762-06-28"));
+    public static final User USER1 = new User(USER1_ID, "Razin", "Stepan", "Timofeevich", "Back-end developer", LocalDate.of(1674, 6, 5));
+    public static final User USER2 = new User(USER2_ID, "Pugachev", "Emelyan", "Ivanovich", "Front-end developer", LocalDate.of(1775, 01, 10));
+    public static final User USER3 = new User(USER3_ID, "Romanov", "Peter", "Alekseevich", "Team lead", LocalDate.of(1672, 5, 30));
+    public static final User USER4 = new User(USER4_ID, "Romanova", "Ekaterina", "Alekseevna", "QA engineer", LocalDate.of(1762, 6, 28));
 
-    public static final User NEW_USER = new User("Romanov", "Mikhail", "Fyodorovich", "DevOps", LocalDate.parse("1596-07-22"));
+    public static final User NEW_USER = new User("Romanov", "Mikhail", "Fyodorovich", "DevOps", LocalDate.of(1596, 7, 22));
 
     public static final String LAST_NAME_SEARCH = "Romanov";
     public static final String FIRST_NAME_SEARCH = "Emelyan";
     public static final String MIDDLE_NAME_SEARCH = "Timofeevich";
-    public static final LocalDate START_BIRTHDAY_SEARCH = LocalDate.parse("1600-01-01");
-    public static final LocalDate END_BIRTHDAY_SEARCH = LocalDate.parse("1700-01-01");
+    public static final LocalDate START_BIRTHDAY_SEARCH = LocalDate.of(1600, 1, 1);
+    public static final LocalDate END_BIRTHDAY_SEARCH = LocalDate.of(1700, 1, 1);
 }

@@ -4,13 +4,8 @@ import com.teleshovivan.Application;
 import com.teleshovivan.model.User;
 import com.teleshovivan.util.exceptions.NotFoundException;
 import org.junit.Assert;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.Stopwatch;
-import org.junit.runner.Description;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -18,7 +13,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringRunner;
 import java.time.LocalDate;
-import java.util.concurrent.TimeUnit;
 
 import static com.teleshovivan.TestData.*;
 
@@ -61,7 +55,7 @@ public class UserServiceImplTest {
 
     @Test(expected = NotFoundException.class)
     public void testGetNotFound() throws Exception {
-        User user = service.get(NOT_EXIST_USER_ID);
+        service.get(NOT_EXIST_USER_ID);
     }
 
     @Test
@@ -104,6 +98,6 @@ public class UserServiceImplTest {
     @Test
     public void testGetAllByBirthday() throws Exception {
         User [] expected = {USER1, USER3};
-        Assert.assertArrayEquals(expected, service.getAllByBirthDayBetween(START_BIRTHDAY_SEARCH, END_BIRTHDAY_SEARCH).toArray());
+        Assert.assertArrayEquals(expected, service.getAllByBirthdayBetween(START_BIRTHDAY_SEARCH, END_BIRTHDAY_SEARCH).toArray());
     }
 }
