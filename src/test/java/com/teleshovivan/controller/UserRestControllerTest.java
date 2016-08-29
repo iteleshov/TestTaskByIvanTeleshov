@@ -6,7 +6,7 @@ import com.teleshovivan.Application;
 import com.teleshovivan.model.User;
 import com.teleshovivan.service.UserService;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +53,7 @@ public class UserRestControllerTest {
 
     private ObjectWriter objectWriter;
 
-    @Before
+    @BeforeClass
     public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
         this.objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
@@ -131,6 +131,8 @@ public class UserRestControllerTest {
         mockMvc.perform(get(REST_URL + "filterByLastName?lastName=" + USER3.getLastName()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$.[0].lastName", is(USER3.getLastName())))
                 .andExpect(jsonPath("$.[0].firstName", is(USER3.getFirstName())))
                 .andExpect(jsonPath("$.[0].middleName", is(USER3.getMiddleName())))
@@ -144,6 +146,8 @@ public class UserRestControllerTest {
                 .param("firstName", USER2.getFirstName()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$.[0].lastName", is(USER2.getLastName())))
                 .andExpect(jsonPath("$.[0].firstName", is(USER2.getFirstName())))
                 .andExpect(jsonPath("$.[0].middleName", is(USER2.getMiddleName())))
@@ -157,6 +161,8 @@ public class UserRestControllerTest {
                 .param("middleName", USER1.getMiddleName()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$.[0].lastName", is(USER1.getLastName())))
                 .andExpect(jsonPath("$.[0].firstName", is(USER1.getFirstName())))
                 .andExpect(jsonPath("$.[0].middleName", is(USER1.getMiddleName())))
@@ -170,6 +176,8 @@ public class UserRestControllerTest {
                 .param("appointment", USER3.getAppointment()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$.[0].lastName", is(USER3.getLastName())))
                 .andExpect(jsonPath("$.[0].firstName", is(USER3.getFirstName())))
                 .andExpect(jsonPath("$.[0].middleName", is(USER3.getMiddleName())))
@@ -187,6 +195,8 @@ public class UserRestControllerTest {
                 .param("endDate", "1700-01-01"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$.[0].lastName", is(expected[0].getLastName())))
                 .andExpect(jsonPath("$.[0].firstName", is(expected[0].getFirstName())))
                 .andExpect(jsonPath("$.[0].middleName", is(expected[0].getMiddleName())))
