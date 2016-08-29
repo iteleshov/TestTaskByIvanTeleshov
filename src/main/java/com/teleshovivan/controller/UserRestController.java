@@ -39,13 +39,10 @@ public class UserRestController {
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> create(@RequestBody User user) {
-        User savedUser = service.save(user);
+        user.setId(null);
+        User createdUser = service.save(user);
 
-        URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path(REST_URL + "/{id}")
-                .buildAndExpand(savedUser.getId()).toUri();
-
-        return ResponseEntity.created(uriOfNewResource).body(savedUser);
+        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
 
