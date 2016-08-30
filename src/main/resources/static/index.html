@@ -13,11 +13,11 @@
 
     <div class="row">
         <div class="col-md-2 col-md-offset-5" style="padding-top: 5px; padding-bottom: 5px">
-            <input placeholder="From date" ng-model="startDate">
+            <input placeholder="From date" name="startDate" id="startDate" ng-model="startDate">
         </div>
 
         <div class="col-md-2 col-md-offset-5" style="padding-top: 5px; padding-bottom: 5px">
-            <input placeholder="End date" ng-model="endDate">
+            <input placeholder="End date" name="startDate" id="endDate" ng-model="endDate">
         </div>
 
         <div class="col-md-2 col-md-offset-5" style="padding-top: 5px; padding-bottom: 5px">
@@ -58,7 +58,7 @@
             <th>Delete</th>
         </tr>
     </thread>
-    <tr ng-repeat="user in users | filter: dateRangeFilter('birthday', startDate, endDate)">
+    <tr ng-repeat="user in users | filter: search: dateRangeFilter('birthday', startDate, endDate)">
         <td>{{ user.lastName }}</td>
         <td>{{ user.firstName }}</td>
         <td>{{ user.middleName }}</td>
