@@ -4,15 +4,6 @@
             $scope.users = response ? response : [];
         });
 
-        /*$scope.addUser = function(newUser) {
-            $scope.users.push(newUser);
-            $scope.user = undefined;
-        };
-*/
-        /*$scope.addUser = function(user) {
-            user.$create()
-            $scope.users.push(user);
-        };*/
         $scope.addUser = function(newUser) {
             new User({
                 lastName: newUser.lastName,
@@ -23,7 +14,7 @@
             }).$save(function(user) {
                 $scope.users.push(user);
             });
-         //   $scope.newUser = "";
+            $scope.newUser = "";
         };
 
         $scope.updateUser = function(user) {

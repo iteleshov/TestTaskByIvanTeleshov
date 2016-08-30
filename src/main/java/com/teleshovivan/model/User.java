@@ -8,6 +8,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 /**
@@ -62,6 +63,7 @@ public class User {
     @Column(name = "appointment")
     private String appointment;
 
+    @NotNull
     @Column(name = "birthday")
     @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     @JsonDeserialize(using = LocalDateDeserializer.class)

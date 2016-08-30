@@ -6,10 +6,13 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Jager on 29.08.2016.
@@ -35,6 +38,14 @@ public class RestExceptionHandler {
     public String handleEmptyResultDataAccessException(EmptyResultDataAccessException ex) {
         LOGGER.debug(ex.getMessage());
         return ex.getMessage();
+    }
+
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)  // 400
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseBody
+    @Order(Ordered.HIGHEST_PRECEDENCE + 3)
+    public String restValidationError(MethodArgumentNotValidException e) {
+        return e.getBindingResult().toString();
     }
 }
 

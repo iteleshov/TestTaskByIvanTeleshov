@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class UserRestController {
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> create(@RequestBody User user) {
+    public ResponseEntity<User> create(@Valid @RequestBody User user) {
         user.setId(null);
         User createdUser = service.save(user);
 
@@ -47,7 +48,7 @@ public class UserRestController {
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void update(@PathVariable int id, @RequestBody User user) {
+    public void update(@PathVariable int id, @Valid @RequestBody User user) {
         user.setId(id);
         service.update(user);
     }

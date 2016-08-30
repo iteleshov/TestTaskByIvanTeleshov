@@ -68,8 +68,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllByBirthdayBetween(LocalDate startDate, LocalDate endDate) {
-        startDate = startDate == null ? startDate = LocalDate.of(1, 1, 1) : startDate;
-        endDate = endDate == null ? endDate = LocalDate.of(3000, 1, 1) : endDate;
+        startDate = startDate == null ? LocalDate.of(1, 1, 1) : startDate;
+        endDate = endDate == null ? LocalDate.of(3000, 1, 1) : endDate;
         return repository.findAllByBirthdayBetween(startDate, endDate);
     }
 

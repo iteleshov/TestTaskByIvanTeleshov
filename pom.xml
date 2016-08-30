@@ -93,7 +93,6 @@
             <artifactId>momentjs</artifactId>
             <version>${momentjs.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
