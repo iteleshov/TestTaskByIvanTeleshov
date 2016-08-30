@@ -15,6 +15,7 @@
                 $scope.users.push(user);
             });
             $scope.newUser = "";
+            PopUpHide();
         };
 
         $scope.updateUser = function(user) {
