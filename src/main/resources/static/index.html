@@ -6,10 +6,10 @@
 </head>
 <body ng-app="application" class="jumbotron">
 <div class="container" ng-controller="AppController">
+
     <div class="page-header">
         <h1 align="center">Users</h1>
     </div>
-
 
     <div class="row">
         <div class="col-md-2 col-md-offset-5" style="padding-top: 5px; padding-bottom: 5px">
@@ -37,6 +37,32 @@
         </div>
 </div>
 
+   <!-- <button class="btn btn-lg" id="add">Add</button>-->
+    <!--<div class="b-container">
+        Sample Text
+        <button class="btn btn-lg" onclick="PopUpShow">Add</button>
+    </div>
+    <div class="b-popup" id="add">
+        <div class="b-popup-content">
+            Text in Popup
+            &lt;!&ndash;<a href="javascript:PopUpHide()">Hide popup</a>&ndash;&gt;
+            <input placeholder="Last name" id="lastNameUser">
+            <button class="btn btn-lg" onclick="PopUpHide">Save</button>
+        </div>
+    </div>-->
+    <button class="btn btn-lg" onclick="PopUpShow()">Add</button>
+    <div class="input-group" id="addForm">
+        <input type="text" class="form-control" ng-model="lastNameUser" placeholder="Last name" />
+        <input type="text" class="form-control" ng-model="firstNameUser" placeholder="First name" />
+        <input type="text" class="form-control" ng-model="middleNameUser" placeholder="Middle name" />
+        <input type="text" class="form-control" ng-model="appointmentUser" placeholder="Appointment" />
+        <input type="text" class="form-control" ng-model="birthdayUser" placeholder="Birthday" />
+        <button class="btn btn-lg btn-primary" ng-click="addUser(lastNameUser, firstNameUser, middleNameUser, appointmentUser, birthdayUser)" title="Save">Save</button>
+
+
+
+
+    </div>
 
 <table class="table table-striped display">
     <thread>
@@ -55,9 +81,6 @@
         <td>{{ user.middleName }}</td>
         <td>{{ user.appointment }}</td>
         <td>{{ user.birthday }}</td>
-<!--
-        <td>{{user.birthday | dateFilter | date:"YYYY-MM-DD"}}</td>
--->
         <td>
             <button type="button" class="btn btn-danger btn-sm" ng-click="deleteUser(user)">Delete</button>
         </td>
@@ -74,4 +97,23 @@
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/controllers.js"></script>
 <script type="text/javascript" src="js/services.js"></script>
+<script>
+    $(document).ready(function(){
+        //Скрыть PopUp при загрузке страницы
+        PopUpHide();
+    });
+    //Функция отображения PopUp
+    function PopUpShow(){
+        $("#addForm").show();
+    }
+    //Функция скрытия PopUp
+    function PopUpHide(){
+        $("#addForm").hide();
+    }
+
+    function Save(){
+        addUser('#lastNameUser');
+        PopUpHide();
+    }
+</script>
 </html>

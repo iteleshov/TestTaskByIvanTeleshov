@@ -4,10 +4,13 @@
             $scope.users = response ? response : [];
         });
 
-        $scope.addUser = function(description) {
+        $scope.addUser = function(lastNameUser, firstNameUser, middleNameUser, appointmentUser, birthdayUser) {
             new User({
-                description: description,
-                checked: false
+                lastName: lastNameUser,
+                firstName: firstNameUser,
+                middleName: middleNameUser,
+                appointment: appointmentUser,
+                birthday: birthdayUser
             }).$save(function(user) {
                 $scope.users.push(user);
             });
