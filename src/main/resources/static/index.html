@@ -13,62 +13,62 @@
 
     <div class="row">
         <div class="col-md-2 col-md-offset-5" style="padding-top: 5px; padding-bottom: 5px">
-            <input placeholder="From date" ng-model="startDate">
+            <input placeholder="From date" name="startDate" id="startDate" ng-model="startDate">
         </div>
 
         <div class="col-md-2 col-md-offset-5" style="padding-top: 5px; padding-bottom: 5px">
-            <input placeholder="End date" ng-model="endDate">
+            <input placeholder="End date" name="endDate" id="endDate" ng-model="endDate">
         </div>
 
         <div class="col-md-2 col-md-offset-5" style="padding-top: 5px; padding-bottom: 5px">
-            <input placeholder="First name" ng-model="search.firstName">
+            <input placeholder="First name" id="firstName" ng-model="search.firstName">
         </div>
 
         <div class="col-md-2 col-md-offset-5" style="padding-top: 5px; padding-bottom: 5px">
-            <input placeholder="Last name" ng-model="search.lastName">
+            <input placeholder="Last name" id="lastName" ng-model="search.lastName">
         </div>
 
         <div class="col-md-2 col-md-offset-5" style="padding-top: 5px; padding-bottom: 5px">
-            <input placeholder="Middle name" ng-model="search.middleName">
+            <input placeholder="Middle name" id="middleName" ng-model="search.middleName">
         </div>
 
         <div class="col-md-2 col-md-offset-5" style="padding-top: 5px; padding-bottom: 5px">
-            <input placeholder="Appointment" ng-model="search.appointment">
+            <input placeholder="Appointment" id="appointment" ng-model="search.appointment">
         </div>
-</div>
+    </div>
 
     <button class="btn btn-lg" onclick="Pop()">Add</button>
     <form ng-submit="addUser(newUser)" id="addForm">
-        <input type="text" ng-model="newUser.lastName" name="lastName" id="lastName" placeholder="Last name" style="margin-left: 5px; margin-right: 5px;"/>
-        <input type="text" ng-model="newUser.firstName" name="firstName" id="firstName" placeholder="First name" style="margin-left: 5px; margin-right: 5px;"/>
-        <input type="text" ng-model="newUser.middleName" name="middleName" id="middleName" placeholder="Middle name" style="margin-left: 5px; margin-right: 5px;" />
-        <input type="text" ng-model="newUser.appointment" name="appointment" id="appointment" placeholder="Appointment" style="margin-left: 5px; margin-right: 5px;"/>
-        <input type="text" ng-model="newUser.birthday" name="birthday" id="birthday" placeholder="Birthday" id="birthday" style="margin-left: 5px; margin-right: 5px;"/>
+        <input type="text" ng-model="newUser.lastName" placeholder="Last name" style="margin-left: 5px; margin-right: 5px;"/>
+        <input type="text" ng-model="newUser.firstName" placeholder="First name" style="margin-left: 5px; margin-right: 5px;"/>
+        <input type="text" ng-model="newUser.middleName" placeholder="Middle name" style="margin-left: 5px; margin-right: 5px;" />
+        <input type="text" ng-model="newUser.appointment" placeholder="Appointment" style="margin-left: 5px; margin-right: 5px;"/>
+        <input type="text" ng-model="newUser.birthday" name="birthday" id="birthday" placeholder="Birthday" style="margin-left: 5px; margin-right: 5px;"/>
         <button type="submit" class="btn btn-lg btn-primary" onclick="PopUpHide()" title="Save">Save</button>
     </form>
 
-<table class="table table-striped display">
-    <thread>
-        <tr>
-            <th>Last name</th>
-            <th>First name</th>
-            <th>Middle name</th>
-            <th>Appointment</th>
-            <th>Birthday</th>
-            <th>Delete</th>
+    <table class="table table-striped display">
+        <thread>
+            <tr>
+                <th>Last name</th>
+                <th>First name</th>
+                <th>Middle name</th>
+                <th>Appointment</th>
+                <th>Birthday</th>
+                <th>Delete</th>
+            </tr>
+        </thread>
+        <tr ng-repeat="user in users | filter: search | filter: dateRangeFilter('birthday', startDate, endDate)">
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.middleName }}</td>
+            <td>{{ user.appointment }}</td>
+            <td>{{ user.birthday }}</td>
+            <td>
+                <button type="button" class="btn btn-danger btn-sm" ng-click="deleteUser(user)">Delete</button>
+            </td>
         </tr>
-    </thread>
-    <tr ng-repeat="user in users | filter: dateRangeFilter('birthday', startDate, endDate)">
-        <td>{{ user.lastName }}</td>
-        <td>{{ user.firstName }}</td>
-        <td>{{ user.middleName }}</td>
-        <td>{{ user.appointment }}</td>
-        <td>{{ user.birthday }}</td>
-        <td>
-            <button type="button" class="btn btn-danger btn-sm" ng-click="deleteUser(user)">Delete</button>
-        </td>
-    </tr>
-</table>
+    </table>
 </div>
 </body>
 <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.js"></script>
