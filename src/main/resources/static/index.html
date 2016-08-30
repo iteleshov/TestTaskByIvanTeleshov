@@ -50,18 +50,14 @@
             <button class="btn btn-lg" onclick="PopUpHide">Save</button>
         </div>
     </div>-->
-    <button class="btn btn-lg" onclick="PopUpShow()">Add</button>
+    <button class="btn btn-lg" onclick="Pop()">Add</button>
     <div class="input-group" id="addForm">
-        <input type="text" class="form-control" ng-model="lastNameUser" placeholder="Last name" />
-        <input type="text" class="form-control" ng-model="firstNameUser" placeholder="First name" />
-        <input type="text" class="form-control" ng-model="middleNameUser" placeholder="Middle name" />
-        <input type="text" class="form-control" ng-model="appointmentUser" placeholder="Appointment" />
-        <input type="text" class="form-control" ng-model="birthdayUser" placeholder="Birthday" />
-        <button class="btn btn-lg btn-primary" ng-click="addUser(lastNameUser, firstNameUser, middleNameUser, appointmentUser, birthdayUser)" title="Save">Save</button>
-
-
-
-
+        <input type="text" class="form-control" ng-model="newUser.lastName" placeholder="Last name" />
+        <input type="text" class="form-control" ng-model="newUser.firstName" placeholder="First name" />
+        <input type="text" class="form-control" ng-model="newUser.middleName" placeholder="Middle name" />
+        <input type="text" class="form-control" ng-model="newUser.appointment" placeholder="Appointment" />
+        <input type="text" class="form-control" ng-model="newUser.birthday" placeholder="Birthday" id="birthday" />
+        <button class="btn btn-lg btn-primary" ng-click="addUser(newUser)" onclick="PopUpHide()" title="Save">Save</button>
     </div>
 
 <table class="table table-striped display">
@@ -99,21 +95,24 @@
 <script type="text/javascript" src="js/services.js"></script>
 <script>
     $(document).ready(function(){
-        //Скрыть PopUp при загрузке страницы
         PopUpHide();
     });
-    //Функция отображения PopUp
+
+    function Pop(){
+        if($("#addForm").is(':visible')) {
+            PopUpHide();
+        }
+        else {
+            PopUpShow();
+        }
+    }
+
     function PopUpShow(){
         $("#addForm").show();
     }
-    //Функция скрытия PopUp
+
     function PopUpHide(){
         $("#addForm").hide();
-    }
-
-    function Save(){
-        addUser('#lastNameUser');
-        PopUpHide();
     }
 </script>
 </html>

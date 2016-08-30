@@ -4,17 +4,26 @@
             $scope.users = response ? response : [];
         });
 
-        $scope.addUser = function(lastNameUser, firstNameUser, middleNameUser, appointmentUser, birthdayUser) {
+        /*$scope.addUser = function(newUser) {
+            $scope.users.push(newUser);
+            $scope.user = undefined;
+        };
+*/
+        /*$scope.addUser = function(user) {
+            user.$create()
+            $scope.users.push(user);
+        };*/
+        $scope.addUser = function(newUser) {
             new User({
-                lastName: lastNameUser,
-                firstName: firstNameUser,
-                middleName: middleNameUser,
-                appointment: appointmentUser,
-                birthday: birthdayUser
+                lastName: newUser.lastName,
+                firstName: newUser.firstName,
+                middleName: newUser.middleName,
+                appointment: newUser.appointment,
+                birthday: newUser.birthday
             }).$save(function(user) {
                 $scope.users.push(user);
             });
-            $scope.newUser = "";
+         //   $scope.newUser = "";
         };
 
         $scope.updateUser = function(user) {
