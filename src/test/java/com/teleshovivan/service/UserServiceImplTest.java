@@ -17,7 +17,7 @@ import java.time.LocalDate;
 import static com.teleshovivan.TestData.*;
 
 /**
- * Created by nz on 26.08.16.
+ * Created by Jager on 26.08.16.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)

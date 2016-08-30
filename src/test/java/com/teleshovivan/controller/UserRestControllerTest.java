@@ -192,8 +192,8 @@ public class UserRestControllerTest {
         User [] expected = {USER1, USER3};
 
         mockMvc.perform(get(REST_URL + "between")
-                .param("startDate", "1600-01-01")
-                .param("endDate", "1700-01-01"))
+                .param("startDate", START_BIRTHDAY_SEARCH.toString())
+                .param("endDate", END_BIRTHDAY_SEARCH.toString()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$").isArray())
