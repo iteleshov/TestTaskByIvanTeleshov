@@ -21,7 +21,7 @@ import static com.teleshovivan.TestData.*;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
-@Sql(scripts = {"classpath:schema.sql", "classpath:data.sql"}, config = @SqlConfig(encoding = "UTF-8"), executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+@Sql(scripts = {"classpath:database/schema.sql", "classpath:database/data.sql"}, config = @SqlConfig(encoding = "UTF-8"), executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class UserServiceImplTest {
 
     @Autowired
