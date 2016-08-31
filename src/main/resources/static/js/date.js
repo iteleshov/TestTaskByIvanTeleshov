@@ -3,16 +3,11 @@ var endDate = $('#endDate');
 var birthday = $('#birthday');
 
 function datepicker(dateField) {
-        dateField.datetimepicker({
+    dateField.datetimepicker({
         timepicker: false,
         format: 'Y-m-d',
         lang: 'ru',
-        formatDate: 'Y-m-d',
-        onShow: function () {
-            this.setOptions({
-                minDate: dateField.val() ? dateField.val() : false
-            })
-        }
+        formatDate: 'Y-m-d'
     })
 }
 
