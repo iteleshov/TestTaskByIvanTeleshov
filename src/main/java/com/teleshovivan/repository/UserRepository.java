@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Jager on 25.08.2016.
  */
-
+@Transactional(readOnly = true)
 public interface UserRepository extends JpaRepository<User, Integer> {
 
     List<User> findAllByLastName(String lastName);
