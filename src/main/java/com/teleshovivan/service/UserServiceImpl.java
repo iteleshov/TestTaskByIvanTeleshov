@@ -3,7 +3,6 @@ package com.teleshovivan.service;
 import com.teleshovivan.model.User;
 import com.teleshovivan.util.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 import com.teleshovivan.repository.UserRepository;
 
